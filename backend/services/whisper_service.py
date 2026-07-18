@@ -1,6 +1,7 @@
 import asyncio
 from faster_whisper import WhisperModel
 from config import settings
+import numpy as np
 
 class WhisperService:
     def __init__(self):
@@ -29,5 +30,22 @@ class WhisperService:
         
         transcript = " ".join([segment.text for segment in segments]).strip()
         return transcript
+    
+    def transcribe_raw_pcm(self,pcm_array: np.ndarray) -> str:
+        """
+        Feeds a raw float32 numpy array directly into faster-whisper.
+        """
+        segments, info = self.model.transcribe(
+            pcm_array,
+            language="en",
+            beam_size=5,
+            best_of=5,
+            temperature=0,
+            vad_filter=True,
+            condition_on_previous_text=False
+        )
+        
+        text_chunks = [segment.text for segment in segments]
+        return "".join(text_chunks).strip()
 
 whisper_service = WhisperService()

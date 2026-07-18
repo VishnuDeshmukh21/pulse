@@ -1,0 +1,10 @@
+SpeechRecognition 
+pyaudio 
+faster-whisper
+chromadb
+fastapi
+psycopg[binary]
+pgvector
+sentence-transformers
+psycopg-pool
+python-dotenv

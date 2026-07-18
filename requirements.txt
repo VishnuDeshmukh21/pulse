@@ -1,5 +1,0 @@
-SpeechRecognition 
-pyaudio 
-faster-whisper
-chromadb
-fastapi
