@@ -8,3 +8,4 @@ pgvector
 sentence-transformers
 psycopg-pool
 python-dotenv
+silero-vad
